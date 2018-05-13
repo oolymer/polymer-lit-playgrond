@@ -5,12 +5,17 @@
   "license": "MIT",
   "dependencies": {
     "@material/button": "^0.35.0",
+    "@material/drawer": "^0.35.0",
+    "@material/image-list": "^0.35.0",
+    "@material/list": "^0.35.0",
+    "@material/select": "^0.35.1",
     "@material/textfield": "^0.35.1",
     "@polymer/lit-element": "^0.5.1",
     "@webcomponents/webcomponentsjs": "^2.0.0"
   },
   "devDependencies": {
     "browser-sync": "2.24.4",
+    "node-sass": "4.9.0",
     "npm-delay": "1.0.4",
     "npm-run-all": "4.1.3",
     "polyserve": "0.27.11",
@@ -18,10 +23,12 @@
     "typescript": "2.8.3"
   },
   "scripts": {
-    "dev": "npm-run-all --parallel serve devWatch",
+    "dev": "npm-run-all --parallel serve devWatch devWatchCss",
     "devWatch": "npm-run-all --serial utilDelay serveWatch",
+    "devWatchCss": "npm-run-all --serial utilDelay serveWatchCss",
     "serve": "polyserve --port $npm_package_config_servePort --npm",
-    "serveWatch": "browser-sync start --port $npm_package_config_serveWatchPort --proxy \"localhost:$npm_package_config_servePort\" --no-ui --files '*.js, *.html, demo/**/*.html' --startPath \"/demo/mdc-101-web.html\"",
+    "serveWatch": "browser-sync start --port $npm_package_config_serveWatchPort --proxy \"localhost:$npm_package_config_servePort\" --no-ui --files '*.js, *.html, demo/**/*.html, demo/**/*.css, demo/**/*.scss' --startPath \"/demo/mdc-101-web.html\"",
+    "serveWatchCss": "node-sass --watch --include-path node_modules/ --output demo/ demo/*.scss",
     "utilDelay": "node ./node_modules/.bin/npm-delay 500"
   },
   "config": {
