@@ -1,0 +1,28 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: "Roboto";
+  margin: 0;
+  padding-top: 0.1px;
+}
+
+.home {
+  display: flex;
+}
+
+@import "@material/drawer/mdc-drawer";
+@import "@material/list/mdc-list";
+
+.shrine-drawer .shrine-title {
+  align-self: center;
+  margin: 5px auto;
+}
+
+@import "@material/image-list/mdc-image-list";
+
+.product-list {
+  @include mdc-image-list-standard-columns(3);
+  overflow: auto;
+}
